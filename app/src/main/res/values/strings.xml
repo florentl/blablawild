@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BlablaWild</string>
+    <string name="action_settings">Settings</string>
+    <string name="find_btn">SEARCH AN INTINERARY</string>
+    <string name="search_title">SEARCH</string>
+    <string name="search_from">Departure</string>
+    <string name="search_to">Destination</string>
+    <string name="search_date">Date</string>
+    <string name="search_mandatory_fields">Please fill departure and destination</string>
+</resources>
