@@ -3,7 +3,9 @@ package fr.wcs.blablawild;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListView;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,22 +30,54 @@ public class ItineraryListActivity extends AppCompatActivity {
         setTitle(activityTitle);
 
         //peupler la liste
-        ListView listTrip = findViewById(R.id.itResultList);
-        ArrayList<TripResultModel> results = new ArrayList<>();
+        ArrayList<TripResultModel> tripList = new ArrayList<>();
+        RecyclerView tripRecylerView = findViewById(R.id.itResultList);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        tripRecylerView.setHasFixedSize( true );
+
+        TripResultAdapter trAdapter = new TripResultAdapter(tripList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        tripRecylerView.setLayoutManager(mLayoutManager);
+        tripRecylerView.setItemAnimator(new DefaultItemAnimator());
+        tripRecylerView.setAdapter(trAdapter);
 
         SimpleDateFormat sdf = new SimpleDateFormat(TripResultAdapter.DD_MM_YYYY_MM_HH);
 
         try {
-            results.add(new TripResultModel("Eric", "Cartman", sdf.parse("21/02/2017-15:30"), 15));
-            results.add(new TripResultModel("Stan", "Marsh", sdf.parse("21/02/2017-16:00"), 20));
-            results.add(new TripResultModel("Kenny", "Broflovski", sdf.parse("21/02/2017-16:30"), 16));
-            results.add(new TripResultModel("Kyle", "McCormick", sdf.parse("21/02/2017-17:00"), 40));
-            results.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Eric", "Cartman", sdf.parse("21/02/2017-15:30"), 15));
+            tripList.add(new TripResultModel("Stan", "Marsh", sdf.parse("21/02/2017-16:00"), 20));
+            tripList.add(new TripResultModel("Kenny", "Broflovski", sdf.parse("21/02/2017-16:30"), 16));
+            tripList.add(new TripResultModel("Kyle", "McCormick", sdf.parse("21/02/2017-17:00"), 40));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
+            tripList.add(new TripResultModel("Wendy", "Testaburger", sdf.parse("21/02/2017-17:30"), 20));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        TripResultAdapter adapter = new TripResultAdapter(this, results);
-        listTrip.setAdapter(adapter);
-
+        trAdapter.notifyDataSetChanged();
     }
 }
