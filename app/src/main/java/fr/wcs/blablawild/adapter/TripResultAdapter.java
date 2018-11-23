@@ -7,21 +7,24 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import fr.wcs.blablawild.R;
-import fr.wcs.blablawild.model.TripModel;
+import fr.wcs.blablawild.model.TripResultModel;
 
-public class TripAdapter extends ArrayAdapter<TripModel> {
+public class TripResultAdapter extends ArrayAdapter<TripResultModel> {
 
-    public TripAdapter(Context context, ArrayList<TripModel> trips) {
+    public static final String DD_MM_YYYY_MM_HH = "dd/MM/yyyy-HH:mm";
+
+    public TripResultAdapter(Context context, ArrayList<TripResultModel> trips) {
         super(context, 0, trips);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        TripModel myTrip = getItem(position);
+        TripResultModel myTrip = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_trip, parent, false);
@@ -33,14 +36,12 @@ public class TripAdapter extends ArrayAdapter<TripModel> {
         TextView date = convertView.findViewById(R.id.dateInfo);
 
         // Populate the data into the template view using the data object
-        firstname.setText(myTrip.getFirstname());
+        firstname.setText(myTrip.getFirstName());
         lastname.setText(myTrip.getLastname());
         price.setText(myTrip.getPrice() + " $");
-        //date.setText();
+        SimpleDateFormat dateFormat = new SimpleDateFormat( DD_MM_YYYY_MM_HH );
+        date.setText(dateFormat.format(myTrip.getDate()));
 
-        //tvName.setText(user.name);
-        //tvHome.setText(user.hometown);
-        // Return the completed view to render on screen
         return convertView;
     }
 

@@ -3,8 +3,8 @@ package fr.wcs.blablawild;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -60,8 +60,7 @@ public class ItinerarySearchActivity extends AppCompatActivity {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "dd/MM/yyyy";
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
                 dateTxt.setText(sdf.format(myCalendar.getTime()));
             }
         };
