@@ -1,17 +1,18 @@
 package fr.wcs.blablawild;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import fr.wcs.blablawild.adapter.TripResultAdapter;
+import fr.wcs.blablawild.model.SearchModel;
 import fr.wcs.blablawild.model.TripResultModel;
 
 import static fr.wcs.blablawild.R.layout;
@@ -23,11 +24,14 @@ public class ItineraryListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(layout.activity_itinerary_list);
 
-        Intent intent = getIntent();
-        String activityTitle = intent.getStringExtra(ItinerarySearchActivity.FROM) + " >> "
-                + intent.getStringExtra(ItinerarySearchActivity.TO);
+        Bundle data = getIntent().getExtras();
+        SearchModel myTrip = data.getParcelable(ItinerarySearchActivity.SEARCH_DONE);
+
+        String activityTitle = myTrip.getDeparture() + " >> "
+                + myTrip.getDestination();
 
         setTitle(activityTitle);
+        Toast.makeText( this, myTrip.getDate(), Toast.LENGTH_SHORT ).show();
 
         //peupler la liste
         ArrayList<TripResultModel> tripList = new ArrayList<>();

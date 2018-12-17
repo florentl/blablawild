@@ -14,11 +14,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import fr.wcs.blablawild.model.SearchModel;
+
 public class ItinerarySearchActivity extends AppCompatActivity {
 
-    public static final String FROM = "from";
-    public static final String TO = "to";
-    public static final String DATE = "date";
+    public static final String SEARCH_DONE = "SEARCH_DONE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +43,8 @@ public class ItinerarySearchActivity extends AppCompatActivity {
                     toast.show();
                 } else {
                     Intent intent = new Intent(searchActivity, ItineraryListActivity.class);
-                    intent.putExtra(FROM, fromValue);
-                    intent.putExtra(TO, toValue);
-                    intent.putExtra(DATE,dateInput.getText().toString());
+                    intent.putExtra( SEARCH_DONE,
+                            new SearchModel(fromValue, toValue,dateInput.getText().toString() ));
                     startActivity(intent);
                 }
             }
