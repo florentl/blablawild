@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import fr.wcs.blablawild.model.SearchModel;
+import fr.wcs.blablawild.triplist.ItineraryListActivity;
 
 public class ItinerarySearchActivity extends AppCompatActivity {
 

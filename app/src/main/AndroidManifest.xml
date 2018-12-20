@@ -22,7 +22,7 @@
         <activity android:name=".ItinerarySearchActivity"
             android:label="@string/search_title"
             />
-        <activity android:name=".ItineraryListActivity"></activity>
+        <activity android:name=".triplist.ItineraryListActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package fr.wcs.blablawild.adapter;
+package fr.wcs.blablawild.triplist;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,37 +11,36 @@ import java.util.List;
 
 import fr.wcs.blablawild.R;
 import fr.wcs.blablawild.model.TripResultModel;
-import fr.wcs.blablawild.viewholder.TripViewHolder;
 
-public class TripResultAdapter extends RecyclerView.Adapter<TripViewHolder>{
+public class ItineraryRecyclerAdapter extends RecyclerView.Adapter<ItineraryViewHolder>{
 
     public static final String DD_MM_YYYY_MM_HH = "dd/MM/yyyy-HH:mm";
 
     private List<TripResultModel> tripList;
 
-    public TripResultAdapter(ArrayList<TripResultModel> trips) {
+    public ItineraryRecyclerAdapter(ArrayList<TripResultModel> trips) {
         tripList=trips;
     }
 
     @NonNull
     @Override
-    public TripViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public ItineraryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
 
         // create a new view
-        return new TripViewHolder(
+        return new ItineraryViewHolder(
                 LayoutInflater.from(parent.getContext()).inflate(R.layout.item_trip, parent,
                         false));
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TripViewHolder tripViewHolder, int i) {
+    public void onBindViewHolder(@NonNull ItineraryViewHolder itineraryViewHolder, int i) {
         SimpleDateFormat dateFormat = new SimpleDateFormat( DD_MM_YYYY_MM_HH );
         TripResultModel myTrip = tripList.get( i );
-        tripViewHolder.getmFirstName().setText( myTrip.getFirstName() );
-        tripViewHolder.getmLastName().setText( myTrip.getLastname() );
-        tripViewHolder.getmDate().setText( dateFormat.format(myTrip.getDate()) );
-        tripViewHolder.getmPrice().setText(  "$" + String.valueOf( myTrip.getPrice()) );
+        itineraryViewHolder.getmFirstName().setText( myTrip.getFirstName() );
+        itineraryViewHolder.getmLastName().setText( myTrip.getLastname() );
+        itineraryViewHolder.getmDate().setText( dateFormat.format(myTrip.getDate()) );
+        itineraryViewHolder.getmPrice().setText(  "$" + String.valueOf( myTrip.getPrice()) );
 
     }
 
@@ -49,5 +48,7 @@ public class TripResultAdapter extends RecyclerView.Adapter<TripViewHolder>{
     public int getItemCount() {
         return tripList.size();
     }
+
+
 
 }

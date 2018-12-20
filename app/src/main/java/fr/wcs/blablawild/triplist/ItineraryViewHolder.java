@@ -1,4 +1,4 @@
-package fr.wcs.blablawild.viewholder;
+package fr.wcs.blablawild.triplist;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,14 +7,14 @@ import android.widget.TextView;
 
 import fr.wcs.blablawild.R;
 
-public class TripViewHolder extends RecyclerView.ViewHolder {
+public class ItineraryViewHolder extends RecyclerView.ViewHolder {
 
     private TextView mDate;
     private TextView mPrice;
     private TextView mFirstName;
     private TextView mLastName;
 
-    public TripViewHolder(@NonNull View itemView) {
+    public ItineraryViewHolder(@NonNull View itemView) {
         super( itemView );
         this.mDate = itemView.findViewById( R.id.dateInfo );
         this.mPrice = itemView.findViewById( R.id.priceInfo );
